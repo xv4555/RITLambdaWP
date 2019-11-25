@@ -25,7 +25,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-
+		<?php echo "Hello World." ?>
 		<?php
 		wp_body_open();
 		?>
@@ -181,7 +181,7 @@
 			?>
 
 		</header><!-- #site-header -->
-
+ 
 		<?php
 		// Output the menu modal.
 		get_template_part( 'template-parts/modal-menu' );
