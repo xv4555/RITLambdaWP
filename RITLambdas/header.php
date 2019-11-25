@@ -51,6 +51,7 @@
 									<?php twentytwenty_the_theme_svg( 'search' ); ?>
 								</span>
 								<span class="toggle-text"><?php _e( 'Search', 'twentytwenty' ); ?></span>
+								<?php echo "Hello World it's Chris"; ?>
 							</span>
 						</button><!-- .search-toggle -->
 
