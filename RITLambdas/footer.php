@@ -2,60 +2,98 @@
 /**
  * The template for displaying the footer
  *
- * Contains the opening of the #site-footer div and all content after.
+ * Contains the closing of the #content div and all content after.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WordPress
- * @subpackage Twenty_Twenty
- * @since 1.0.0
+ * @package wedding_photo
  */
 
 ?>
-			<footer id="site-footer" role="contentinfo" class="header-footer-group">
-
-				<div class="section-inner">
-
-					<div class="footer-credits">
-
-						<p class="footer-copyright">&copy;
+		<!--
+        ===================
+           FOOTER
+        ===================
+        --> 
+		
+        <footer class="section zb-footer lo-footer  wow fadeInUp">
+            <div class="container">
+                <div class="row relative mini-section-separator">
+                    <div class="col-sm-4" id="footer-sidebar-1">
+						
+						  <ul class="social-icon">
 							<?php
-							echo date_i18n(
-								/* translators: Copyright date format, see https://secure.php.net/date */
-								_x( 'Y', 'copyright date format', 'twentytwenty' )
-							);
+							$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','googlePlus'=>'https://mail.google.com','dribbble'=>'https://dribbble.com/','youtube'=>'http://youtube.com/','linkedin'=>'https://in.linkedin.com/');
+							$social_icons = array('facebook','twitter','googlePlus','dribbble','youtube','linkedin');
+							foreach( $social_icons as $social_icon){
+								$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_url',$social_icons_default[$social_icon]);
+								if( $wedding_photo_social_icons ){
+									echo '<li class="banner4_socials_'.$social_icon.'"><a href="'. esc_url($wedding_photo_social_icons).'" target="_blank">';
+									if( $social_icon == 'googlePlus' ){
+										echo '<i class ="fa fa-google-plus"></i>'; 
+									}else{
+										echo '<i class ="fa fa-'. esc_attr($social_icon).'"></i>';    
+									}
+									echo '</a></li>';
+								}
+							}
 							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo bloginfo( 'name' ); ?></a>
-						</p><!-- .footer-copyright -->
-
-						<p class="powered-by-wordpress">
-							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
-								<?php _e( 'Powered by WordPress', 'twentytwenty' ); ?>
-							</a>
-						</p><!-- .powered-by-wordpress -->
-
-					</div><!-- .footer-credits -->
-
-					<a class="to-the-top" href="#site-header">
-						<span class="to-the-top-long">
+                            
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="footer-links" id="footer-sidebar-2">
 							<?php
-							/* translators: %s: HTML character for up arrow */
-							printf( __( 'To the top %s', 'twentytwenty' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
+							
+							wp_nav_menu( array(
+										'theme_location' => 'new-menu',
+										'menu_id'        => 'new-menu',
+										'container' => 'ul',
+										'menu_class' => 'navbar-nav mr-0 ml-auto',
+										'link_class'   => 'nav-link'
+							) );
+							if(is_active_sidebar('footer-sidebar-2')){
+								//dynamic_sidebar('footer-sidebar-2');
+							}
 							?>
-						</span><!-- .to-the-top-long -->
-						<span class="to-the-top-short">
-							<?php
-							/* translators: %s: HTML character for up arrow */
-							printf( __( 'Up %s', 'twentytwenty' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-short -->
-					</a><!-- .to-the-top -->
+                        </div>
+                    </div>
+                    <div class="col-sm-4" id="footer-sidebar-3">
+                    	<?php 
+                    		//echo get_theme_mod('copyright_text_setting');	
 
-				</div><!-- .section-inner -->
+							if(is_active_sidebar('footer-sidebar-3')){
+								//dynamic_sidebar('footer-sidebar-3');
+								echo '<p> © 2019 FOG Lite Developed By <a href="https://jannatqualitybacklinks.com/product/fog-lite-pro-version/">Remove Footer Signature</a></p>';
+							}
+							else 
+							{
+								//dynamic_sidebar('footer-sidebar-3');
+								echo '<p> © 2019 FOG Lite Developed By <a href="https://jannatqualitybacklinks.com/product/fog-lite-pro-version/">Remove Footer Signature</a></p>';
+							}
+						?>
+                        
+                    </div>
 
-			</footer><!-- #site-footer -->
-
-		<?php wp_footer(); ?>
-
-	</body>
+                </div>
+            </div>
+        </footer>
+	
+	<?php wp_footer(); ?>
+	 <script>
+	 $(document).ready(function(){
+		$('.ptp-price').each(function(){ 
+			var pricse=$(this).html().split("/");
+			$(this).html(pricse[0]);
+			$(this).append('<span class="duration-month">'+pricse[1]+'</span>');
+			
+		});
+		
+	 });
+	
+	
+	
+	</script>
+</body>
 </html>
+
