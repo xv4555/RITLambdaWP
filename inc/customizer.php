@@ -112,6 +112,22 @@ function wedding_photo_customize_register( $wp_customize ) {
 		'render_callback' => 'banner_text_setting',
 	) );
 	 
+	 $wp_customize->add_setting('banner_sub_setting', array(
+	 	'default'        => 'Make Them Special',
+	 	'sanitize_callback' => 'wp_filter_nohtml_kses',
+	 ));
+	 
+	 $wp_customize->add_control('banner_sub_setting', array(
+	 'label'   => 'Banner Subtitle',
+	  'section' => 'banner_settings_section',
+	 'type'    => 'text',
+	 ));
+	 
+	 $wp_customize->selective_refresh->add_partial( 'banner_text_setting', array(
+		'selector' => '.banner4_sub', // You can also select a css class
+		'render_callback' => 'banner_sub_setting',
+	) );
+	 
 	 
 	 $wp_customize->add_setting('banner_button_setting', array(
 	   'default'        => 'Capture Your Moments',
@@ -531,8 +547,8 @@ function wedding_photo_customize_register( $wp_customize ) {
 	) );
 	
 	
-	$teams_areas =3;
-	$teams_areas=get_theme_mod('wedding_team_nosection',3);
+	$teams_areas =40;
+	$teams_areas=get_theme_mod('wedding_team_nosection',40);
 	for($k=1;$k<=$teams_areas;$k++)
 	{
 	    $h=$teams_area=$k;

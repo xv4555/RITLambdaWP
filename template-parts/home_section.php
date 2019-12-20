@@ -71,10 +71,14 @@
                             <div class="lo_content_inner">
 								<?php 
 								$banners_text=get_theme_mod('banner_text_setting','Capture Your Moments');
+								$sub_text=get_theme_mod('banner_sub_setting','Make Them Special');
 								if($banners_text)
-								{									?>
-                                <h2 class="main_heading wow fadeInRight banner4_headings"><?php echo $banners_text; ?></h2> 
+								{ ?>
+                                <h1 class="main_heading wow fadeInRight banner4_headings"><?php echo $banners_text; ?></h1>
+								<h2 class="sub_heading wow fadeInRight banner4_sub"><?php echo $sub_text; ?></h2>
+
 								<?php } 
+
 								$but_texts=get_theme_mod('banner_button_setting','Get started');
 								
 								if($but_texts)
@@ -278,104 +282,7 @@
 		{
 		
 		?>
-        <!--
-        ===================
-            TEAM
-        =================== 
-        -->
-        
-        <section class="lo-portfolio" id="team">
-            <div class="container" id="">
-                <div class="row portfolio-nav section-separator pb-0" id="filter-button">
-                    <div class="col-lg-7 col-md-12 lo-again-section-title portolio-sec-title mb-0">
-                        <!--<span class="section-tagline wow fadeInLeft"> Portfolio</span>-->
-						<?php 
-						$section_title=get_theme_mod('wedding_teams_heading','Our Creative Team');
-						if($section_title)
-						{
-						?>
-                        <h2 class="wow fadeInUp team4_headings"><?php echo $section_title; ?></h2>
-						<?php } ?>
-                    </div>
-					<?php 
-					$defalts='Photographer,Consultant,Video Editor';
-					$buttons_title=get_theme_mod('wedding_buttons_heading',$defalts);
-					if($buttons_title)
-					{
-					?>
-                    <div class="nav-port col-lg-5 col-md-12 wow fadeInLeft">
-						  <ul class="">
-						  
-                            <li data-filter="*" class="active wow fadeInUp team4_filters" data-wow-duration="0.8s" data-wow-delay="0.1s"> <span>All</span></li>
-							<?php $all_titles=explode(",",$buttons_title); 
-							foreach($all_titles as $kee=>$vales)
-							{
-								?>
-								<li data-filter=".user-<?php echo str_replace(" ","-",$vales); ?>" class="wow fadeInUp team4_filters" data-wow-duration="0.8s" data-wow-delay="0.2s"><span><?php echo $vales; ?></span></li>
-								<?php
-							}
-							?>
-                        </ul>
-                    </div>
-				<?php } ?>
-                </div>
-                <div class="mh-project-gallery col-sm-12 wow fadeInUp" id="project-gallery" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                    <div class="portfolioContainer row">
-						<?php 
-						$teams_areas =3;
-						$teams_areas=get_theme_mod('wedding_team_nosection',3);
-						for($k=1;$k<=$teams_areas;$k++)
-						{
-							$teams_area=$k;
-							$filters=get_theme_mod('wedding_team_'.$teams_area.'_search');
-							$mem_name=get_theme_mod('wedding_team_'.$teams_area.'_name');
-							$mem_designation=get_theme_mod('wedding_team_'.$teams_area.'_position');
-							$mem_image=get_theme_mod('wedding_team_'.$teams_area.'_image');
-							if($mem_name)
-							{
-						?>
-                        <div class="grid-item wow fadeInRight col-md-4 col-sm-6 col-xs-12 user-<?php echo str_replace(" ","-",$filters); ?>">
-                            <div class="bg-3 ">
-                                <div class="lo-team-item team4_image_<?php echo $teams_area; ?>">  
-									<?php if($mem_image){ ?>
-                                    <img src="<?php echo $mem_image; ?>" alt="" class="img-fluid mr-0">
-									<?php } ?>
-                                    <div class="team-member-content">
-                                        <h5 class="team4_name_<?php echo $teams_area; ?>"><?php echo $mem_name ?></h5>
-                                        <h6 class="team4_designation_<?php echo $teams_area; ?>"><?php echo $mem_designation ?></h6>
-                                        <ul class="team-social">
-											<?php 
-											$teams_areas_socials =array('facebook','twitter','instagram','linkedin');
-										
-											foreach( $teams_areas_socials as $social_icon){
-												$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_'.$teams_area.'_team');
-												if( $wedding_photo_social_icons ){
-													echo '<li class="team4_social_'.$teams_area.'_'.$social_icon.'"><a href="'. esc_url($wedding_photo_social_icons).'" target="_blank">';
-													if( $social_icon == 'googlePlus' ){
-														echo '<i class ="fa fa-google-plus"></i>'; 
-													}else{
-														echo '<i class ="fa fa-'. esc_attr($social_icon).'"></i>';    
-													}
-													echo '</a></li>';
-												}
-										  }
-											?>
-                                        </ul>             
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
-							<?php } } ?>
-                    </div> <!-- End: .grid .project-gallery -->
-                </div> <!-- End: .grid .project-gallery -->
-				
-            </div> <!-- End: .part -->
-        </section>
-        <?php
-		}
-        if(get_theme_mod('wedding_testimonial_section_enable',1))
-		{
-		?>
+      
         <!--
         ===================
             REVIEW 
@@ -479,6 +386,113 @@
 		if(get_theme_mod('wedding_photograph_section_enable',1))
 		{
 		
+		?>
+
+  <!--
+        ===================
+            TEAM
+        =================== 
+        -->
+        
+        <section class="lo-portfolio" id="team">
+            <div class="container" id="">
+                <div class="row portfolio-nav section-separator pb-0" id="filter-button">
+                    <div class="col-lg-7 col-md-12 lo-again-section-title portolio-sec-title mb-0">
+                        <!--<span class="section-tagline wow fadeInLeft"> Portfolio</span>-->
+						<?php 
+						$section_title=get_theme_mod('wedding_teams_heading','Our Creative Team');
+						if($section_title)
+						{
+						?>
+                        <h2 class="wow fadeInUp team4_headings"><?php echo $section_title; ?></h2>
+						<?php } ?>
+                    </div>
+					<?php 
+					$defalts='Photographer,Consultant,Video Editor';
+					$buttons_title=get_theme_mod('wedding_buttons_heading',$defalts);
+					if($buttons_title)
+					{
+					?>
+                    <div class="nav-port col-lg-5 col-md-12 wow fadeInLeft">
+						  <ul class="">
+						  
+                            <!--<li data-filter="*" class="active wow fadeInUp team4_filters" data-wow-duration="0.8s" data-wow-delay="0.1s"> <span>All</span></li>-->
+							<?php $all_titles=explode(",",$buttons_title); 
+							$is_first = true;
+							foreach($all_titles as $kee=>$vales)
+							{
+								?>
+							 	<?php
+								if($is_first){
+									$active_tab = "active wow fadeInUp team4_filters";
+									$is_first=false;
+								}else{
+									$active_tab = "wow fadeInUp team4_filters";
+								} ?> 
+								<li data-filter=".user-<?php echo str_replace(" ","-",$vales); ?>" class=<?php echo $active_tab; ?> data-wow-duration="0.8s" data-wow-delay="0.2s"><span><?php echo 								$vales; ?></span></li>
+								<?php
+							}
+							?>
+                        </ul>
+                    </div>
+				<?php } ?>
+                </div>
+                <div class="mh-project-gallery col-sm-12 wow fadeInUp" id="project-gallery" data-wow-duration="0.8s" data-wow-delay="0.5s">
+                    <div class="portfolioContainer row">
+						<?php 
+						$teams_areas =40;
+						$teams_areas=get_theme_mod('wedding_team_nosection',40);
+						for($k=1;$k<=$teams_areas;$k++)
+						{
+							$teams_area=$k;
+							$filters=get_theme_mod('wedding_team_'.$teams_area.'_search');
+							$mem_name=get_theme_mod('wedding_team_'.$teams_area.'_name');
+							$mem_designation=get_theme_mod('wedding_team_'.$teams_area.'_position');
+							$mem_image=get_theme_mod('wedding_team_'.$teams_area.'_image');
+							if($mem_name)
+							{
+						?>
+                        <div class="grid-item wow fadeInRight col-md-4 col-sm-6 col-xs-12 user-<?php echo str_replace(" ","-",$filters); ?>">
+                            <div class="bg-3 ">
+                                <div class="lo-team-item team4_image_<?php echo $teams_area; ?>">  
+									<?php if($mem_image){ ?>
+                                    <img src="<?php echo $mem_image; ?>" alt="" class="img-fluid mr-0">
+									<?php } ?>
+                                    <div class="team-member-content">
+                                        <h5 class="team4_name_<?php echo $teams_area; ?>"><?php echo $mem_name ?></h5>
+                                        <h6 class="team4_designation_<?php echo $teams_area; ?>"><?php echo $mem_designation ?></h6>
+                                        <ul class="team-social">
+											<?php 
+											$teams_areas_socials =array('facebook','twitter','instagram','linkedin');
+										
+											foreach( $teams_areas_socials as $social_icon){
+												$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_'.$teams_area.'_team');
+												if( $wedding_photo_social_icons ){
+													echo '<li class="team4_social_'.$teams_area.'_'.$social_icon.'"><a href="'. esc_url($wedding_photo_social_icons).'" target="_blank">';
+													if( $social_icon == 'googlePlus' ){
+														echo '<i class ="fa fa-google-plus"></i>'; 
+													}else{
+														echo '<i class ="fa fa-'. esc_attr($social_icon).'"></i>';    
+													}
+													echo '</a></li>';
+												}
+										  }
+											?>
+                                        </ul>             
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+							<?php } } ?>
+                    </div> <!-- End: .grid .project-gallery -->
+                </div> <!-- End: .grid .project-gallery -->
+				
+            </div> <!-- End: .part -->
+        </section>
+        <?php
+		}
+        if(get_theme_mod('wedding_testimonial_section_enable',1))
+		{
 		?>
        
         <!--
