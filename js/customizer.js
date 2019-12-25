@@ -40,3 +40,7 @@
 		} );
 	} );
 } )( jQuery );
+
+	$(document).ready(function(){
+    	$('section div:not([data-filter=".user-Charter"])').hide();
+	});

@@ -166,6 +166,8 @@ function wedding_photo_scripts() {
 	wp_enqueue_style( 'style_css_style', get_template_directory_uri().'/assets/css/styles.css' );
 	wp_enqueue_style( 'style_responsive', get_template_directory_uri().'/assets/css/responsive.css' );
 	
+	wp_enqueue_script( 'script_jquerymin', get_template_directory_uri() . '/assets/plugins/js/jquery.min.js', array(), '20151215', true );
+
 	
 	wp_enqueue_script( 'script_jquerymin', get_template_directory_uri() . '/assets/plugins/js/jquery.min.js', array(), '20151215', true );
 	
@@ -200,6 +202,12 @@ function wedding_photo_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+	
+	 wp_enqueue_script(
+        'helper-script', // name your script so that you can attach other scripts and de-register, etc.
+        get_template_directory_uri() . '/js/helper-scripts.js', // this is the location of your script file
+        array('jquery') // this array lists the scripts upon which your script depends
+    );
 }
 add_action( 'wp_enqueue_scripts', 'wedding_photo_scripts' );
 /**

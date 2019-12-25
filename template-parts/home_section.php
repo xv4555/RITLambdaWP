@@ -48,7 +48,37 @@
                 	<div class="tabbbel_d2 ">
                 		<div class="container home4_banners">
                     <div class="row section-separator relative">
-                    	   <ul class="home-social">
+                    	   <!-- <ul class="home-social">
+							<?php 
+// 								$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','linkedin'=>'https://in.linkedin.com/');
+// 								$social_icons = array('facebook','twitter','linkedin');
+// 								foreach( $social_icons as $social_icon){
+// 									$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_url',$social_icons_default[$social_icon]);
+// 									if( $wedding_photo_social_icons ){
+// 										echo '<li class="banner4_socials_'.$social_icon.'"><a href="'. esc_url($wedding_photo_social_icons).'" target="_blank">';
+// 										if( $social_icon == 'googlePlus' ){
+// 											echo '<i class ="fa fa-google-plus"></i>'; 
+// 										}else{
+// 											echo '<i class ="fa fa-'. esc_attr($social_icon).'"></i>';    
+// 										}
+// 										echo '</a></li>';
+// 									}
+// 								}
+// 								?>
+                               
+                            </ul> -->
+                        <div class="col-sm-12">
+							
+                            <div class="lo_content_inner">
+								<?php 
+								$banners_text=get_theme_mod('banner_text_setting','Capture Your Moments');
+								$sub_text=get_theme_mod('banner_sub_setting','Make Them Special');
+								if($banners_text)
+								{ ?>
+								
+                                <h1 class="main_heading wow fadeInRight banner4_headings"><?php echo $banners_text; ?></h1>
+								<h2 class="sub_heading wow fadeInRight banner4_sub"><?php echo $sub_text; ?></h2>
+														<ul class="home-social">
 							<?php 
 								$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','linkedin'=>'https://in.linkedin.com/');
 								$social_icons = array('facebook','twitter','linkedin');
@@ -67,15 +97,6 @@
 								?>
                                
                             </ul>
-                        <div class="col-sm-12">
-                            <div class="lo_content_inner">
-								<?php 
-								$banners_text=get_theme_mod('banner_text_setting','Capture Your Moments');
-								$sub_text=get_theme_mod('banner_sub_setting','Make Them Special');
-								if($banners_text)
-								{ ?>
-                                <h1 class="main_heading wow fadeInRight banner4_headings"><?php echo $banners_text; ?></h1>
-								<h2 class="sub_heading wow fadeInRight banner4_sub"><?php echo $sub_text; ?></h2>
 
 								<?php } 
 
@@ -156,7 +177,49 @@
 				$about_left_section='background-image: url('.get_theme_mod('wedding_aboutus_background_image').');';
 			}		
 			?>
-            <div class="container-half container-half-left cover-bg" style="<?php echo $about_left_section; ?>"></div>
+            <!-- <div class="container-half container-half-left cover-bg" style="<?php echo $about_left_section; ?>"></div> -->
+			<div class="core-values">
+			<h3 class="core-title">
+				Core Values 
+			</h3>
+<ul class="list-unstyled text-center text-md-left">
+                    <li class="row p-4">
+                        <div class="col-md-2 col-12 pb-md-0 pb-2"><i class="fa fa-compass fa-5x"></i></div>     
+                         <div class="col-md-8 col-12">
+                            <h5>Authenticity</h5>
+                            <p>Demonstration of one’s true self to the world, despite external expectations.</p>
+                        </div>
+                    </li>
+                    <li class="row p-4">
+                            <div class="col-md-2 col-12 pb-md-0 pb-2"><i class="fa fa-fire fa-5x"></i></div>     
+                             <div class="col-md-8 col-12">
+                                <h5>Courageous Leadership</h5>
+                                <p>Integrity through action towards a more humane world, especially in times of adversity.</p>
+                            </div>
+                    </li>
+                    <li class="row p-4">
+                            <div class="col-md-2 col-12 pb-md-0 pb-2"><i class="fa fa-globe fa-5x"></i></div>     
+                             <div class="col-md-8 col-12">
+                                <h5>Cultural Heritage</h5>
+                                <p>Ideas and experiences of a people, transcending the world through generations.</p>
+                            </div>
+                    </li>
+                    <li class="row p-4">
+                            <div class="col-md-2 col-12 pb-md-0 pb-2"><i class="fa fa-heart fa-5x"></i></div>     
+                             <div class="col-md-8 col-12">
+                                <h5>Love</h5>
+                                <p>Care and respect for oneself, the brotherhood, and the world.</p>
+                            </div>
+                    </li>
+                    <li class="row p-4">
+                            <div class="col-md-2 col-12 pb-md-0 pb-2"><i class="fa fa-book fa-5x"></i></div>     
+                             <div class="col-md-8 col-12">
+                                <h5>Wisdom</h5>
+                                <p>Pursuit of understanding and its positive application towards one’s life and the world.</p>
+                            </div>
+                    </li>
+                </ul>
+			</div>
             <div class="container-half container-half-right main-color-bg"></div>
             <div class="container about4_banner">
                 <div class="row">
@@ -424,12 +487,12 @@
 								?>
 							 	<?php
 								if($is_first){
-									$active_tab = "active wow fadeInUp team4_filters";
+									$active_tab = "wow fadeInUp team4_filters active";
 									$is_first=false;
 								}else{
 									$active_tab = "wow fadeInUp team4_filters";
 								} ?> 
-								<li data-filter=".user-<?php echo str_replace(" ","-",$vales); ?>" class=<?php echo $active_tab; ?> data-wow-duration="0.8s" data-wow-delay="0.2s"><span><?php echo 								$vales; ?></span></li>
+								<li data-filter=".user-<?php echo str_replace(" ","-",$vales); ?>" class="<?php echo $active_tab; ?>" data-wow-duration="0.8s" data-wow-delay="0.2s"><span><?php echo $vales; ?></span></li>
 								<?php
 							}
 							?>
@@ -726,13 +789,13 @@
 								?>
                                 <p class="contactus4_subheading"><?php echo $sed_subheads; ?></p>
 								<?php }
-								$phone_number=get_theme_mod('general_phone_info','8945612300');
+								$phone_number=get_theme_mod('general_phone_info','3472766941');
 								if($phone_number)
 								{
 								?>
                                 <a class="contactus4_generalphone" href="tel:+<?php echo $phone_number; ?>"><i class="fa fa-phone"></i>+<?php echo $phone_number; ?></a>
 								<?php } 
-								$email_info=get_theme_mod('general_email_info','foglite@gamil.com');
+								$email_info=get_theme_mod('general_email_info','ritlambdas@gmail.com');
 								if($email_info)
 								{
 								?>
