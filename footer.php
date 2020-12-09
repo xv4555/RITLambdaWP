@@ -23,8 +23,8 @@
 						
 						  <ul class="social-icon">
 							<?php
-							$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','googlePlus'=>'https://mail.google.com','dribbble'=>'https://dribbble.com/','youtube'=>'http://youtube.com/','linkedin'=>'https://in.linkedin.com/');
-							$social_icons = array('facebook','twitter','googlePlus','dribbble','youtube','linkedin');
+							$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','googlePlus'=>'https://mail.google.com','dribbble'=>'https://dribbble.com/','youtube'=>'http://youtube.com/','linkedin'=>'https://in.linkedin.com/', 'instagram'=>'https://instagram.com/');
+							$social_icons = array('facebook','twitter','googlePlus','dribbble','youtube','instagram');
 							foreach( $social_icons as $social_icon){
 								$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_url',$social_icons_default[$social_icon]);
 								if( $wedding_photo_social_icons ){

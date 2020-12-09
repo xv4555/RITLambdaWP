@@ -515,7 +515,6 @@ function wedding_photo_customize_register( $wp_customize ) {
 	);
 	
 	
-	
 	$wp_customize->add_setting('wedding_teams_heading', array(
 		'default'    => 'Our Creative Team',
 		'sanitize_callback' => 'wp_filter_nohtml_kses',
@@ -626,6 +625,141 @@ function wedding_photo_customize_register( $wp_customize ) {
 	
 	/* End Team Section */
 	
+	
+/* Start Leadership Section */
+	$wp_customize->add_section('leaderships_settings_section', array(
+	  'title'          => 'Leadership',
+	   'panel'		   => 'wedding_photo_home_page_setting'
+	 ));
+	 
+	 $wp_customize->add_setting('wedding_leaderships_section_enable', array(
+		'default'    => '1',
+		'sanitize_callback' => 'wedding_sanitize_checkbox',
+	));
+
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'wedding_leaderships_section_enable',
+			array(
+				'label'     => 'Show Leaderships Section',
+				'section'   => 'leaderships_settings_section',
+				'settings'  => 'wedding_leaderships_section_enable',
+				'type'      => 'checkbox',
+			)
+		)
+	);
+	
+	
+	$wp_customize->add_setting('wedding_leaderships_heading', array(
+		'default'    => 'Our Creative Leadership',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	 ));
+	$wp_customize->add_control('wedding_leaderships_heading', array(
+	 'label'   => 'Section Heading',
+	  'section' => 'leaderships_settings_section',
+	 'type'    => 'text',
+	));
+	$wp_customize->selective_refresh->add_partial( 'wedding_leaderships_heading', array(
+		'selector' => '.leadership4_headings', // You can also select a css class
+		'render_callback' => 'wedding_leaderships_heading',
+	) );
+	
+	$wp_customize->add_setting('wedding_buttonsyear_heading', array(
+		'default'    => 'Photographer,Consultant,Video Editor',
+		'sanitize_callback' => 'wp_filter_nohtml_kses',
+	 ));
+	$wp_customize->add_control('wedding_buttonsyear_heading', array(
+	 'label'   => 'Add Filteryear Options',
+	 'description'	=>'Add with comma(,) sepration for multiple option Eg.(Video,Photographer).',
+	  'section' => 'leaderships_settings_section',
+	 'type'    => 'text',
+	));
+	
+	$wp_customize->selective_refresh->add_partial( 'wedding_buttonsyear_heading', array(
+		'selector' => '.leadership4_filteryears', // You can also select a css class
+		'render_callback' => 'wedding_buttonsyear_heading',
+	) );
+	
+	
+	$leaderships_areas =200;
+	$leaderships_areas=get_theme_mod('wedding_leadership_nosection',200);
+	for($k=1;$k<=$leaderships_areas;$k++)
+	{
+	    $h=$leaderships_area=$k;
+		$wp_customize->add_setting('wedding_leadership_'.$leaderships_area.'_name', array(
+			'sanitize_callback' => 'wp_filter_nohtml_kses',
+		));
+		$wp_customize->add_control('wedding_leadership_'.$leaderships_area.'_name', array(
+		 'label'   => 'Member('.$h.'): Member Name',
+		  'section' => 'leaderships_settings_section',
+		 'type'    => 'text',
+		));
+		
+		$wp_customize->add_setting( 'wedding_leadership_'.$leaderships_area.'_image', array(
+	    'sanitize_callback' => 'esc_url_raw',
+		));
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,'wedding_leadership_'.$leaderships_area.'_image',array(
+		   'label'      	=>'Upload Leadership Member Image',
+		   'description'	=>'upload a image for Leadership section',
+		   'section'    	=> 'leaderships_settings_section',
+		)));
+		
+		
+		
+		$wp_customize->add_setting('wedding_leadership_'.$leaderships_area.'_position', array(
+			'sanitize_callback' => 'wp_filter_nohtml_kses',
+		));
+		$wp_customize->add_control('wedding_leadership_'.$leaderships_area.'_position', array(
+		 'label'   => 'Member Designation',
+		  'section' => 'leaderships_settings_section',
+		 'type'    => 'text',
+		));
+		
+		$wp_customize->add_setting( 'wedding_leadership_'.$leaderships_area.'_search', array(
+			'sanitize_callback' => 'wp_filter_nohtml_kses',
+		));
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize,'wedding_leadership_'.$leaderships_area.'_search',array(
+		   'label'      	=>'Filteryear By',
+		   'description'	=>'Enter only one filteryear option from All Filteryear options. Eg (Video) ',
+		   'section'    	=> 'leaderships_settings_section',
+		   'type'    => 'text',
+		)));
+		
+		$leaderships_areas_socials =array('facebook','twitter','instagram','linkedin');
+		foreach($leaderships_areas_socials as $leaderships_areas_social)
+		{
+			$wp_customize->add_setting( 'wedding_photo_'.$leaderships_areas_social.'_'.$leaderships_area.'_leadership', array(
+            'sanitize_callback' => 'esc_url_raw'
+			));
+			$wp_customize->add_control( 'wedding_photo_'.$leaderships_areas_social.'_'.$leaderships_area.'_leadership', array(
+				'section'       => 'leaderships_settings_section',
+				'label'         => 'Social Link : '.ucwords($leaderships_areas_social),
+				'type'          => 'url'
+			));
+			$wp_customize->selective_refresh->add_partial( 'wedding_photo_'.$leaderships_areas_social.'_'.$leaderships_area.'_leadership', array(
+			'selector' => '.leadership4_social_'.$leaderships_area.'_'.$leaderships_areas_social, // You can also select a css class
+			'render_callback' => 'wedding_photo_'.$leaderships_areas_social.'_'.$leaderships_area.'_leadership',
+			) );
+		}
+		$wp_customize->selective_refresh->add_partial( 'wedding_leadership_'.$leaderships_area.'_image', array(
+		'selector' => '.leadership4_image_'.$leaderships_area, // You can also select a css class
+		'render_callback' => 'wedding_leadership_'.$leaderships_area.'_image',
+		) );
+		
+		$wp_customize->selective_refresh->add_partial( 'wedding_leadership_'.$leaderships_area.'_name', array(
+		'selector' => '.leadership4_name_'.$leaderships_area, // You can also select a css class
+		'render_callback' => 'wedding_leadership_'.$leaderships_area.'_name',
+		) );
+		
+		$wp_customize->selective_refresh->add_partial( 'wedding_leadership_'.$leaderships_area.'_position', array(
+		'selector' => '.leadership4_designation_'.$leaderships_area, // You can also select a css class
+		'render_callback' => 'wedding_leadership_'.$leaderships_area.'_position',
+		) );
+	}
+	
+	
+	/* End Leadership Section */
 	
 	
 	/* Start Counter Section */
@@ -1276,8 +1410,8 @@ function wedding_photo_customize_register( $wp_customize ) {
 	  'title'          => 'General Info (Contact)',
 	  'priority'		=> 32,
 	)); 
-	$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','googlePlus'=>'https://mail.google.com','dribbble'=>'https://dribbble.com/','youtube'=>'http://youtube.com/','linkedin'=>'https://in.linkedin.com/');
-	$social_icons = array('facebook','twitter','googlePlus','dribbble','youtube','linkedin');
+	$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','googlePlus'=>'https://mail.google.com','dribbble'=>'https://dribbble.com/','youtube'=>'http://youtube.com/','linkedin'=>'https://in.linkedin.com/','instagram'=>'https://www.instagram.com/');
+	$social_icons = array('facebook','twitter','googlePlus','dribbble','youtube','linkedin', 'instagram');
 	foreach( $social_icons as $social_icon){
 	    
 	    $wp_customize->add_setting( 'wedding_photo_'.$social_icon.'_url', array(

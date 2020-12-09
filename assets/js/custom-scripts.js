@@ -28,8 +28,8 @@
             }
         });
      
-        $('.portfolio-nav li').click(function(){
-            $('.portfolio-nav .active').removeClass('active');
+        $('.team li').click(function(){
+            $('.team .active').removeClass('active');
             $(this).addClass('active');
      
             var selector = $(this).attr('data-filter');
@@ -41,6 +41,37 @@
              });
              return false;
         });
+
+      });
+    /* Loader Code End */
+	
+	
+	$(window).on("load", function() { 
+        $(".section-loader").fadeOut("slow");
+
+		 var $cont = $('.portContainer');
+		
+		 $cont.isotope({
+            filter: $('.lead .active').attr('data-filteryear'),
+           animationOptions: {
+               queue: true
+           }
+       	});
+		  
+		 $('.lead li').click(function(){
+            $('.lead .active').removeClass('active');
+            $(this).addClass('active');
+     
+            var selector = $(this).attr('data-filteryear');
+            $cont.isotope({
+                filter: selector,
+                animationOptions: {
+                    queue: true
+                }
+             });
+             return false;
+        });
+		  
       });
     /* Loader Code End */
     

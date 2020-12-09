@@ -81,7 +81,7 @@
 														<ul class="home-social">
 							<?php 
 								$social_icons_default=array('facebook'=>'https://www.facebook.com/','twitter'=>'https://twitter.com/','linkedin'=>'https://in.linkedin.com/');
-								$social_icons = array('facebook','twitter','linkedin');
+								$social_icons = array('facebook','twitter','linkedin','instagram');
 								foreach( $social_icons as $social_icon){
 									$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_url',$social_icons_default[$social_icon]);
 									if( $wedding_photo_social_icons ){
@@ -477,7 +477,7 @@
 					{
 					?>
                     <div class="nav-port col-lg-5 col-md-12 wow fadeInLeft">
-						  <ul class="">
+						  <ul class="team">
 						  
                             <!--<li data-filter="*" class="active wow fadeInUp team4_filters" data-wow-duration="0.8s" data-wow-delay="0.1s"> <span>All</span></li>-->
 							<?php $all_titles=explode(",",$buttons_title); 
@@ -532,6 +532,113 @@
 												$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_'.$teams_area.'_team');
 												if( $wedding_photo_social_icons ){
 													echo '<li class="team4_social_'.$teams_area.'_'.$social_icon.'"><a href="'. esc_url($wedding_photo_social_icons).'" target="_blank">';
+													if( $social_icon == 'googlePlus' ){
+														echo '<i class ="fa fa-google-plus"></i>'; 
+													}else{
+														echo '<i class ="fa fa-'. esc_attr($social_icon).'"></i>';    
+													}
+													echo '</a></li>';
+												}
+										  }
+											?>
+                                        </ul>             
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+							<?php } } ?>
+                    </div> <!-- End: .grid .project-gallery -->
+                </div> <!-- End: .grid .project-gallery -->
+				
+            </div> <!-- End: .part -->
+        </section>
+        <?php
+		}
+        if(get_theme_mod('wedding_leaderships_section_enable',1))
+		{
+		?>
+
+<!--
+        ===================
+            LEADERSHIP
+        =================== 
+        -->
+        
+        <section class="lo-portfolio" id="leadership">
+            <div class="container" id="">
+                <div class="row portfolio-nav section-separator pb-0" id="filteryear-button">
+                    <div class="col-lg-7 col-md-12 lo-again-section-title portolio-sec-title mb-0">
+                        <!--<span class="section-tagline wow fadeInLeft"> Portfolio</span>-->
+						<?php 
+						$section_title=get_theme_mod('wedding_leaderships_heading','Our Creative Leadership');
+						if($section_title)
+						{
+						?>
+                        <h2 class="wow fadeInUp leadership4_headings"><?php echo $section_title; ?></h2>
+						<?php } ?>
+                    </div>
+					<?php 
+					$defalts='Photographer,Consultant,Video Editor';
+					$buttons_title=get_theme_mod('wedding_buttonsyear_heading',$defalts);
+					if($buttons_title)
+					{
+					?>
+                    <div class="nav-portlead col-lg-5 col-md-12 wow fadeInLeft">
+						  <ul class="lead">
+						  
+                            <!--<li data-filteryear="*" class="active wow fadeInUp leadership4_filteryears" data-wow-duration="0.8s" data-wow-delay="0.1s"> <span>All</span></li>-->
+							<?php $all_titles=explode(",",$buttons_title); 
+							$is_first = true;
+							foreach($all_titles as $kee=>$vales)
+							{
+								?>
+							 	<?php
+								if($is_first){
+									$active_tabyear = "wow fadeInUp leadership4_filteryears active";
+									$is_first=false;
+								}else{
+									$active_tabyear = "wow fadeInUp leadership4_filteryears";
+								} ?> 
+								<li data-filteryear=".leader-<?php echo str_replace(" ","-",$vales); ?>" class="<?php echo $active_tabyear; ?>" data-wow-duration="0.8s" data-wow-delay="0.2s"><span><?php echo $vales; ?></span></li>
+								<?php
+							}
+							?>
+                        </ul>
+                    </div>
+				<?php } ?>
+                </div>
+                <div class="mh-project-gallery col-sm-12 wow fadeInUp" id="project-gallery" data-wow-duration="0.8s" data-wow-delay="0.5s">
+                    <div class="portContainer row">
+						<?php 
+						$leaderships_areas =200;
+						$leaderships_areas=get_theme_mod('wedding_leadership_nosection',200);
+						for($k=1;$k<=$leaderships_areas;$k++)
+						{
+							$leaderships_area=$k;
+							$filteryears=get_theme_mod('wedding_leadership_'.$leaderships_area.'_search');
+							$mem_name=get_theme_mod('wedding_leadership_'.$leaderships_area.'_name');
+							$mem_designation=get_theme_mod('wedding_leadership_'.$leaderships_area.'_position');
+							$mem_image=get_theme_mod('wedding_leadership_'.$leaderships_area.'_image');
+							if($mem_name)
+							{
+						?>
+                        <div class="leader-item wow fadeInRight col-md-4 col-sm-6 col-xs-12 leader-<?php echo str_replace(" ","-",$filteryears); ?>">
+                            <div class="bg-3 ">
+                                <div class="lo-leadership-item leadership4_image_<?php echo $leaderships_area; ?>">  
+									<?php if($mem_image){ ?>
+                                    <img src="<?php echo $mem_image; ?>" alt="" class="img-fluid mr-0">
+									<?php } ?>
+                                    <div class="leadership-member-content">
+                                        <h5 class="leadership4_name_<?php echo $leaderships_area; ?>"><?php echo $mem_name ?></h5>
+                                        <h6 class="leadership4_designation_<?php echo $leaderships_area; ?>"><?php echo $mem_designation ?></h6>
+                                        <ul class="leadership-social">
+											<?php 
+											$leaderships_areas_socials =array('facebook','twitter','instagram','linkedin');
+										
+											foreach( $leaderships_areas_socials as $social_icon){
+												$wedding_photo_social_icons = get_theme_mod ('wedding_photo_'.$social_icon.'_'.$leaderships_area.'_leadership');
+												if( $wedding_photo_social_icons ){
+													echo '<li class="leadership4_social_'.$leaderships_area.'_'.$social_icon.'"><a href="'. esc_url($wedding_photo_social_icons).'" target="_blank">';
 													if( $social_icon == 'googlePlus' ){
 														echo '<i class ="fa fa-google-plus"></i>'; 
 													}else{
